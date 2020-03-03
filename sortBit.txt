@@ -1,0 +1,38 @@
+
+//my first attend solution
+
+class Solution {
+	    public int[] sortByBits(int[] arr) {
+	        
+	        int[]bit=new int[arr.length];
+	        int key=0;
+	        int numb=0;
+	        for(int a=0;a<arr.length;a++){
+	            int num_bit=0;
+	            int num=arr[a];
+	            while(num>1){
+	                num_bit=num_bit+num%2;
+	                num=num/2;
+	            }
+	            if(num!=0){
+	                num_bit++;
+	                key=bit[a]=num_bit;
+	                numb=arr[a];
+	            }
+	            int i=a-1;
+	            while(i>=0){
+	                if(bit[i]>key){
+	                    arr[i+1]=arr[i];
+	                    bit[i+1]=bit[i];
+	                    i--;
+	                }else{
+	                break;
+	                }
+	            
+	            }
+	            arr[++i]=numb;
+	            bit[i]=key;
+	        }
+	        return arr;
+	    }
+	}
